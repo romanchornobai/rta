@@ -1,36 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RTA — Red de Transporte Aragonés</title>
-  <meta name="description" content="RTA (Red de Transporte Aragonés) - Conectando el talento joven con Aragón a través de movilidad inteligente y proyectos con propósito." />
+  <meta name="description"
+    content="RTA (Red de Transporte Aragonés) - Conectando el talento joven con Aragón a través de movilidad inteligente y proyectos con propósito." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     /* ─── RESET & BASE ───────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --ink:        #0f1217;
-      --ink-soft:   #4a5260;
-      --ink-muted:  #8a929e;
-      --rule:       #e4e6ea;
-      --surface:    #f7f8fa;
-      --white:      #ffffff;
-      --accent:     #1c3d5a;
-      --accent-dim: #2e5475;
-      --accent-pale:#e8eef3;
-      --gold:       #d9a817;
-      --red:        #b73735;
-      --nav-w:      260px;
-      --font-body:  'DM Sans', sans-serif;
-      --font-disp:  'Cormorant Garamond', serif;
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    html, body {
+    :root {
+      --ink: #0f1217;
+      --ink-soft: #4a5260;
+      --ink-muted: #8a929e;
+      --rule: #e4e6ea;
+      --surface: #f7f8fa;
+      --white: #ffffff;
+      --accent: #1c3d5a;
+      --accent-dim: #2e5475;
+      --accent-pale: #e8eef3;
+      --gold: #d9a817;
+      --red: #b73735;
+      --nav-w: 260px;
+      --font-body: 'DM Sans', sans-serif;
+      --font-disp: 'Cormorant Garamond', serif;
+    }
+
+    html,
+    body {
       height: 100%;
       font-family: var(--font-body);
       background: var(--white);
@@ -56,14 +67,16 @@
       display: flex;
       flex-direction: column;
       position: fixed;
-      top: 0; left: 0; bottom: 0;
+      top: 0;
+      left: 0;
+      bottom: 0;
       z-index: 100;
       transition: transform .3s ease;
     }
 
     .sidebar__brand {
       padding: 2.5rem 2rem 2rem;
-      border-bottom: 1px solid rgba(255,255,255,.08);
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
     }
 
     .brand-tag {
@@ -72,7 +85,7 @@
       font-weight: 500;
       letter-spacing: .18em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.35);
+      color: rgba(255, 255, 255, .35);
       margin-bottom: .6rem;
     }
 
@@ -88,7 +101,7 @@
       display: block;
       font-size: .95rem;
       font-weight: 300;
-      color: rgba(255,255,255,.5);
+      color: rgba(255, 255, 255, .5);
       font-family: var(--font-body);
       letter-spacing: .02em;
       margin-top: .25rem;
@@ -108,7 +121,7 @@
       font-weight: 600;
       letter-spacing: .18em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.2);
+      color: rgba(255, 255, 255, .2);
       padding: 0 2rem .75rem;
       margin-top: 1rem;
     }
@@ -119,7 +132,7 @@
       gap: .85rem;
       padding: .78rem 2rem;
       text-decoration: none;
-      color: rgba(255,255,255,.55);
+      color: rgba(255, 255, 255, .55);
       font-size: .85rem;
       font-weight: 400;
       letter-spacing: .01em;
@@ -131,37 +144,47 @@
 
     .nav-link:hover {
       color: var(--white);
-      background: rgba(255,255,255,.04);
+      background: rgba(255, 255, 255, .04);
     }
 
     .nav-link.active {
       color: var(--white);
       border-left-color: #5a9bc4;
-      background: rgba(255,255,255,.06);
+      background: rgba(255, 255, 255, .06);
       font-weight: 500;
     }
 
     .nav-link svg {
-      width: 16px; height: 16px;
+      width: 16px;
+      height: 16px;
       opacity: .7;
       flex-shrink: 0;
     }
 
-    .nav-link.active svg { opacity: 1; }
+    .nav-link.active svg {
+      opacity: 1;
+    }
 
     @keyframes menuFocus {
-      0%, 100% { box-shadow: none; }
-      35% { box-shadow: 18px 0 44px rgba(28,61,90,.22); }
+
+      0%,
+      100% {
+        box-shadow: none;
+      }
+
+      35% {
+        box-shadow: 18px 0 44px rgba(28, 61, 90, .22);
+      }
     }
 
     .sidebar__footer {
       padding: 1.5rem 2rem;
-      border-top: 1px solid rgba(255,255,255,.08);
+      border-top: 1px solid rgba(255, 255, 255, .08);
     }
 
     .sidebar__footer p {
       font-size: .7rem;
-      color: rgba(255,255,255,.2);
+      color: rgba(255, 255, 255, .2);
       line-height: 1.6;
     }
 
@@ -169,11 +192,13 @@
     .menu-toggle {
       display: none;
       position: fixed;
-      top: 1rem; left: 1rem;
+      top: 1rem;
+      left: 1rem;
       z-index: 200;
       background: var(--ink);
       border: none;
-      width: 40px; height: 40px;
+      width: 40px;
+      height: 40px;
       border-radius: 6px;
       cursor: pointer;
       flex-direction: column;
@@ -181,9 +206,11 @@
       justify-content: center;
       gap: 5px;
     }
+
     .menu-toggle span {
       display: block;
-      width: 18px; height: 1.5px;
+      width: 18px;
+      height: 1.5px;
       background: var(--white);
       transition: all .2s;
     }
@@ -207,8 +234,15 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* ─── PAGE HEADER BAND ───────────────────────────────────── */
@@ -271,7 +305,9 @@
       border-right: 1px solid var(--rule);
     }
 
-    .stat-cell:last-child { border-right: none; }
+    .stat-cell:last-child {
+      border-right: none;
+    }
 
     .stat-cell__num {
       font-family: var(--font-disp);
@@ -308,7 +344,7 @@
 
     .card:hover {
       border-color: #c4d0da;
-      box-shadow: 0 2px 16px rgba(0,0,0,.04);
+      box-shadow: 0 2px 16px rgba(0, 0, 0, .04);
     }
 
     .card__tag {
@@ -348,7 +384,9 @@
       transition: border-color .2s;
     }
 
-    .card-wide:hover { border-color: #c4d0da; }
+    .card-wide:hover {
+      border-color: #c4d0da;
+    }
 
     .card-wide__index {
       font-family: var(--font-disp);
@@ -440,14 +478,14 @@
     .chart-card {
       position: relative;
       min-height: 360px;
-      border: 1px solid rgba(15,18,23,.08);
+      border: 1px solid rgba(15, 18, 23, .08);
       border-radius: 8px;
       padding: 1.35rem 1.35rem 1.1rem;
       background:
-        linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.88)),
-        radial-gradient(circle at 12% 0%, rgba(217,168,23,.12), transparent 34%),
+        linear-gradient(180deg, rgba(255, 255, 255, .96), rgba(255, 255, 255, .88)),
+        radial-gradient(circle at 12% 0%, rgba(217, 168, 23, .12), transparent 34%),
         var(--white);
-      box-shadow: 0 16px 40px rgba(15,18,23,.05);
+      box-shadow: 0 16px 40px rgba(15, 18, 23, .05);
       overflow: hidden;
     }
 
@@ -488,9 +526,9 @@
     .chart-card__meta {
       flex-shrink: 0;
       padding: .38rem .62rem;
-      border: 1px solid rgba(15,18,23,.1);
+      border: 1px solid rgba(15, 18, 23, .1);
       border-radius: 999px;
-      background: rgba(255,255,255,.78);
+      background: rgba(255, 255, 255, .78);
       color: var(--ink-soft);
       font-size: .82rem;
       font-weight: 600;
@@ -558,7 +596,9 @@
       border-bottom: 1px solid var(--rule);
     }
 
-    .agenda-item:last-child { border-bottom: none; }
+    .agenda-item:last-child {
+      border-bottom: none;
+    }
 
     .agenda-date {
       text-align: center;
@@ -598,7 +638,10 @@
       text-align: right;
     }
 
-    .agenda-meta .badge { margin-bottom: .4rem; display: block; }
+    .agenda-meta .badge {
+      margin-bottom: .4rem;
+      display: block;
+    }
 
     /* ─── QUOTE BLOCK ────────────────────────────────────────── */
     .quote-block {
@@ -672,7 +715,9 @@
       transition: border-color .2s;
     }
 
-    .partner-card:hover { border-color: #c4d0da; }
+    .partner-card:hover {
+      border-color: #c4d0da;
+    }
 
     .partner-card__sector {
       font-size: .6rem;
@@ -709,7 +754,8 @@
     .partner-card__benefit::before {
       content: '';
       display: block;
-      width: 6px; height: 6px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
       background: var(--accent);
       flex-shrink: 0;
@@ -723,8 +769,8 @@
       position: relative;
       overflow: hidden;
       background:
-        linear-gradient(90deg, rgba(15,18,23,.035) 1px, transparent 1px) 0 0 / 72px 72px,
-        linear-gradient(180deg, rgba(15,18,23,.03) 1px, transparent 1px) 0 0 / 72px 72px,
+        linear-gradient(90deg, rgba(15, 18, 23, .035) 1px, transparent 1px) 0 0 / 72px 72px,
+        linear-gradient(180deg, rgba(15, 18, 23, .03) 1px, transparent 1px) 0 0 / 72px 72px,
         #fbfbf8;
     }
 
@@ -733,9 +779,9 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(105deg, rgba(255,255,255,.95) 0%, rgba(255,255,255,.82) 45%, rgba(255,255,255,.25) 100%),
-        linear-gradient(165deg, rgba(217,168,23,.12), transparent 38%),
-        linear-gradient(25deg, transparent 58%, rgba(183,55,53,.08));
+        linear-gradient(105deg, rgba(255, 255, 255, .95) 0%, rgba(255, 255, 255, .82) 45%, rgba(255, 255, 255, .25) 100%),
+        linear-gradient(165deg, rgba(217, 168, 23, .12), transparent 38%),
+        linear-gradient(25deg, transparent 58%, rgba(183, 55, 53, .08));
       pointer-events: none;
       z-index: 1;
     }
@@ -747,7 +793,7 @@
       right: 7%;
       width: 22rem;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(15,18,23,.25), transparent);
+      background: linear-gradient(90deg, transparent, rgba(15, 18, 23, .25), transparent);
       transform: rotate(-22deg);
       transform-origin: center;
       opacity: .7;
@@ -783,7 +829,7 @@
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 1.5rem;
-      animation: fadeUp .7s cubic-bezier(.2,.8,.2,1) both;
+      animation: fadeUp .7s cubic-bezier(.2, .8, .2, 1) both;
     }
 
     .hero__eyebrow::before {
@@ -801,7 +847,7 @@
       color: var(--ink);
       margin-bottom: 1.5rem;
       max-width: 740px;
-      animation: fadeUp .7s cubic-bezier(.2,.8,.2,1) .08s both;
+      animation: fadeUp .7s cubic-bezier(.2, .8, .2, 1) .08s both;
     }
 
     .hero h1 em {
@@ -815,14 +861,14 @@
       line-height: 1.8;
       max-width: 520px;
       margin-bottom: 2.5rem;
-      animation: fadeUp .7s cubic-bezier(.2,.8,.2,1) .16s both;
+      animation: fadeUp .7s cubic-bezier(.2, .8, .2, 1) .16s both;
     }
 
     .cta-row {
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
-      animation: fadeUp .7s cubic-bezier(.2,.8,.2,1) .24s both;
+      animation: fadeUp .7s cubic-bezier(.2, .8, .2, 1) .24s both;
     }
 
     .btn {
@@ -851,18 +897,18 @@
       background: var(--accent-dim);
       border-color: var(--accent-dim);
       transform: translateY(-2px);
-      box-shadow: 0 14px 28px rgba(28,61,90,.18);
+      box-shadow: 0 14px 28px rgba(28, 61, 90, .18);
     }
 
     .btn--ghost {
-      background: rgba(255,255,255,.64);
+      background: rgba(255, 255, 255, .64);
       color: var(--ink);
-      border: 1px solid rgba(15,18,23,.13);
+      border: 1px solid rgba(15, 18, 23, .13);
       backdrop-filter: blur(10px);
     }
 
     .btn--ghost:hover {
-      border-color: rgba(28,61,90,.35);
+      border-color: rgba(28, 61, 90, .35);
       color: var(--ink);
       transform: translateY(-2px);
     }
@@ -872,7 +918,7 @@
       min-height: 590px;
       display: grid;
       align-items: center;
-      animation: fadeUp .85s cubic-bezier(.2,.8,.2,1) .18s both;
+      animation: fadeUp .85s cubic-bezier(.2, .8, .2, 1) .18s both;
     }
 
     .hero__image-bg {
@@ -881,7 +927,7 @@
       border-radius: 6px;
       overflow: hidden;
       background: #1d222a;
-      box-shadow: 0 30px 70px rgba(15,18,23,.18);
+      box-shadow: 0 30px 70px rgba(15, 18, 23, .18);
       isolation: isolate;
     }
 
@@ -890,8 +936,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, transparent 0%, rgba(15,18,23,.18) 100%),
-        linear-gradient(90deg, rgba(15,18,23,.2), transparent 42%);
+        linear-gradient(180deg, transparent 0%, rgba(15, 18, 23, .18) 100%),
+        linear-gradient(90deg, rgba(15, 18, 23, .2), transparent 42%);
       z-index: 2;
     }
 
@@ -919,9 +965,9 @@
       width: 6rem;
       height: .55rem;
       background: var(--gold);
-      box-shadow: 0 12px 30px rgba(217,168,23,.22);
+      box-shadow: 0 12px 30px rgba(217, 168, 23, .22);
       transform-origin: left center;
-      animation: scaleIn .75s cubic-bezier(.2,.8,.2,1) both;
+      animation: scaleIn .75s cubic-bezier(.2, .8, .2, 1) both;
     }
 
     .hero__accent-stack span:nth-child(2) {
@@ -941,13 +987,13 @@
       bottom: 4.25rem;
       width: min(330px, 72%);
       padding: 1.25rem;
-      border: 1px solid rgba(255,255,255,.38);
+      border: 1px solid rgba(255, 255, 255, .38);
       border-radius: 6px;
-      background: rgba(255,255,255,.82);
+      background: rgba(255, 255, 255, .82);
       backdrop-filter: blur(18px);
-      box-shadow: 0 24px 55px rgba(15,18,23,.16);
+      box-shadow: 0 24px 55px rgba(15, 18, 23, .16);
       z-index: 5;
-      animation: cardLift .85s cubic-bezier(.2,.8,.2,1) .42s both;
+      animation: cardLift .85s cubic-bezier(.2, .8, .2, 1) .42s both;
     }
 
     .hero__signal-head {
@@ -971,7 +1017,7 @@
       height: .72rem;
       border-radius: 50%;
       background: var(--gold);
-      box-shadow: 0 0 0 7px rgba(217,168,23,.16);
+      box-shadow: 0 0 0 7px rgba(217, 168, 23, .16);
       animation: pulse 2.4s ease-in-out infinite;
       flex-shrink: 0;
     }
@@ -982,7 +1028,7 @@
       align-items: center;
       gap: .75rem;
       padding: .58rem 0;
-      border-top: 1px solid rgba(15,18,23,.08);
+      border-top: 1px solid rgba(15, 18, 23, .08);
       font-size: .78rem;
       color: var(--ink-soft);
     }
@@ -1001,7 +1047,7 @@
       display: grid;
       gap: .55rem;
       width: min(260px, 58%);
-      animation: cardLift .85s cubic-bezier(.2,.8,.2,1) .34s both;
+      animation: cardLift .85s cubic-bezier(.2, .8, .2, 1) .34s both;
     }
 
     .hero__menu-chip {
@@ -1009,12 +1055,12 @@
       align-items: center;
       gap: .65rem;
       padding: .7rem .8rem;
-      border: 1px solid rgba(255,255,255,.34);
+      border: 1px solid rgba(255, 255, 255, .34);
       border-radius: 999px;
-      background: rgba(15,18,23,.66);
-      color: rgba(255,255,255,.9);
+      background: rgba(15, 18, 23, .66);
+      color: rgba(255, 255, 255, .9);
       backdrop-filter: blur(16px);
-      box-shadow: 0 16px 36px rgba(15,18,23,.2);
+      box-shadow: 0 16px 36px rgba(15, 18, 23, .2);
       font-size: .72rem;
       font-weight: 600;
       letter-spacing: .02em;
@@ -1027,23 +1073,23 @@
       height: .55rem;
       border-radius: 50%;
       background: var(--gold);
-      box-shadow: 0 0 0 5px rgba(217,168,23,.16);
+      box-shadow: 0 0 0 5px rgba(217, 168, 23, .16);
       flex-shrink: 0;
     }
 
     .hero__menu-chip:nth-child(2)::before {
       background: #5a9bc4;
-      box-shadow: 0 0 0 5px rgba(90,155,196,.14);
+      box-shadow: 0 0 0 5px rgba(90, 155, 196, .14);
     }
 
     .hero__menu-chip:nth-child(3)::before {
       background: var(--red);
-      box-shadow: 0 0 0 5px rgba(183,55,53,.13);
+      box-shadow: 0 0 0 5px rgba(183, 55, 53, .13);
     }
 
     .hero__bar {
       height: 3px;
-      background: rgba(15,18,23,.08);
+      background: rgba(15, 18, 23, .08);
       border-radius: 6px;
       overflow: hidden;
     }
@@ -1055,7 +1101,7 @@
       background: linear-gradient(90deg, var(--accent), var(--gold));
       border-radius: inherit;
       transform-origin: left;
-      animation: barLoad 1s cubic-bezier(.2,.8,.2,1) .7s both;
+      animation: barLoad 1s cubic-bezier(.2, .8, .2, 1) .7s both;
     }
 
     .hero__caption {
@@ -1063,7 +1109,7 @@
       left: 1.25rem;
       bottom: 1.25rem;
       z-index: 3;
-      color: rgba(255,255,255,.86);
+      color: rgba(255, 255, 255, .86);
       font-size: .72rem;
       letter-spacing: .08em;
       text-transform: uppercase;
@@ -1072,8 +1118,8 @@
     .hero__bottom {
       position: relative;
       z-index: 3;
-      border-top: 1px solid rgba(15,18,23,.08);
-      background: rgba(255,255,255,.68);
+      border-top: 1px solid rgba(15, 18, 23, .08);
+      background: rgba(255, 255, 255, .68);
       backdrop-filter: blur(16px);
       padding: 1.35rem 4rem;
       display: grid;
@@ -1083,11 +1129,13 @@
 
     .hero__metric {
       padding: 1rem 1.5rem;
-      border-right: 1px solid rgba(15,18,23,.08);
-      animation: fadeUp .7s cubic-bezier(.2,.8,.2,1) var(--delay, .35s) both;
+      border-right: 1px solid rgba(15, 18, 23, .08);
+      animation: fadeUp .7s cubic-bezier(.2, .8, .2, 1) var(--delay, .35s) both;
     }
 
-    .hero__metric:last-child { border-right: none; }
+    .hero__metric:last-child {
+      border-right: none;
+    }
 
     .hero__metric-num {
       font-family: var(--font-disp);
@@ -1105,38 +1153,85 @@
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @keyframes scaleIn {
-      from { opacity: 0; transform: scaleX(0); }
-      to { opacity: 1; transform: scaleX(1); }
+      from {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+
+      to {
+        opacity: 1;
+        transform: scaleX(1);
+      }
     }
 
     @keyframes imageDrift {
-      from { transform: scale(1.04) translate3d(-1.2%, 0, 0); }
-      to { transform: scale(1.09) translate3d(1.2%, -1%, 0); }
+      from {
+        transform: scale(1.04) translate3d(-1.2%, 0, 0);
+      }
+
+      to {
+        transform: scale(1.09) translate3d(1.2%, -1%, 0);
+      }
     }
 
     @keyframes cardLift {
-      from { opacity: 0; transform: translateY(24px) scale(.98); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
+      from {
+        opacity: 0;
+        transform: translateY(24px) scale(.98);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
 
     @keyframes barLoad {
-      from { transform: scaleX(0); }
-      to { transform: scaleX(1); }
+      from {
+        transform: scaleX(0);
+      }
+
+      to {
+        transform: scaleX(1);
+      }
     }
 
     @keyframes pulse {
-      0%, 100% { transform: scale(1); box-shadow: 0 0 0 7px rgba(217,168,23,.16); }
-      50% { transform: scale(.86); box-shadow: 0 0 0 12px rgba(217,168,23,.08); }
+
+      0%,
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 7px rgba(217, 168, 23, .16);
+      }
+
+      50% {
+        transform: scale(.86);
+        box-shadow: 0 0 0 12px rgba(217, 168, 23, .08);
+      }
     }
 
     @keyframes lineFloat {
-      0%, 100% { transform: rotate(-22deg) translateX(0); }
-      50% { transform: rotate(-22deg) translateX(-28px); }
+
+      0%,
+      100% {
+        transform: rotate(-22deg) translateX(0);
+      }
+
+      50% {
+        transform: rotate(-22deg) translateX(-28px);
+      }
     }
 
     /* ─── SECTION H2 ─────────────────────────────────────────── */
@@ -1157,16 +1252,33 @@
     }
 
     /* ─── SCROLLBAR ──────────────────────────────────────────── */
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 3px; }
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--rule);
+      border-radius: 3px;
+    }
 
     @media (min-width: 900px) {
-      .hero__image-bg { display: block !important; }
-      .card-wide__img { display: block !important; }
+      .hero__image-bg {
+        display: block !important;
+      }
+
+      .card-wide__img {
+        display: block !important;
+      }
     }
+
     @media (max-width: 900px) {
-      .ods-charts-grid { grid-template-columns: 1fr !important; }
+      .ods-charts-grid {
+        grid-template-columns: 1fr !important;
+      }
     }
 
     /* ─── DESARROLLO Y FUTURO VISUAL ENHANCEMENTS ───────────── */
@@ -1178,46 +1290,67 @@
       overflow: hidden;
       padding-bottom: 6rem;
     }
+
     #desarrollo .page-header::after {
       content: '';
       position: absolute;
-      top: 0; right: 0; bottom: 0; left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
       background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
       opacity: 0.15;
       z-index: 1;
     }
-    #desarrollo .page-header > * { position: relative; z-index: 2; }
-    #desarrollo .page-header h1 { color: var(--white); }
-    #desarrollo .page-header p { color: rgba(255,255,255,0.7); }
-    #desarrollo .page-header__kicker { color: #f1bf00; }
+
+    #desarrollo .page-header>* {
+      position: relative;
+      z-index: 2;
+    }
+
+    #desarrollo .page-header h1 {
+      color: var(--white);
+    }
+
+    #desarrollo .page-header p {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    #desarrollo .page-header__kicker {
+      color: #f1bf00;
+    }
 
     #desarrollo .page-body {
       padding-top: 0;
     }
+
     #desarrollo .stat-row {
       border: none;
       gap: 1.5rem;
       background: transparent;
-      margin-top: -4rem; 
+      margin-top: -4rem;
       position: relative;
       z-index: 10;
     }
+
     #desarrollo .stat-cell {
       background: var(--white);
       border-radius: 12px;
-      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
-      border: 1px solid rgba(0,0,0,0.04);
-      border-right: 1px solid rgba(0,0,0,0.04) !important;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      border-right: 1px solid rgba(0, 0, 0, 0.04) !important;
       border-bottom: 3px solid transparent;
       transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
       text-align: center;
       padding: 2.5rem 1.5rem;
     }
+
     #desarrollo .stat-cell:hover {
       transform: translateY(-5px);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
       border-bottom: 3px solid var(--accent);
     }
+
     #desarrollo .stat-cell__num {
       background: linear-gradient(135deg, var(--accent) 0%, #5a9bc4 100%);
       -webkit-background-clip: text;
@@ -1232,13 +1365,15 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      border: 1px solid rgba(0,0,0,0.05);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     }
+
     #desarrollo .card__img-wrap {
       overflow: hidden;
       height: 220px;
     }
+
     #desarrollo .card img {
       margin-bottom: 0 !important;
       border-radius: 0;
@@ -1246,9 +1381,11 @@
       width: 100%;
       transition: transform 0.5s ease;
     }
+
     #desarrollo .card:hover img {
       transform: scale(1.05);
     }
+
     #desarrollo .card__content {
       padding: 2rem;
       flex: 1;
@@ -1258,25 +1395,64 @@
       position: relative;
       z-index: 2;
     }
+
     #desarrollo .card:hover {
       border-color: transparent;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
       transform: translateY(-4px);
     }
 
     /* ─── RESPONSIVE ─────────────────────────────────────────── */
     @media (max-width: 900px) {
-      :root { --nav-w: 240px; }
-      .page-header, .page-body { padding-left: 2rem; padding-right: 2rem; }
-      .hero__stage { grid-template-columns: 1fr; padding: 5rem 2rem 2rem; gap: 2.5rem; }
-      .hero h1 { font-size: 4rem; }
-      .hero__visual { min-height: 430px; }
-      .hero__image-bg { min-height: 410px; }
-      .hero__signal { right: 1rem; bottom: -1rem; }
-      .hero__bottom { padding: 1.5rem 2rem; grid-template-columns: 1fr 1fr; }
-      .hero__metric { padding-bottom: 1rem; }
-      .hero__metric:nth-child(2) { border-right: none; }
-      .two-col { grid-template-columns: 1fr; }
+      :root {
+        --nav-w: 240px;
+      }
+
+      .page-header,
+      .page-body {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+
+      .hero__stage {
+        grid-template-columns: 1fr;
+        padding: 5rem 2rem 2rem;
+        gap: 2.5rem;
+      }
+
+      .hero h1 {
+        font-size: 4rem;
+      }
+
+      .hero__visual {
+        min-height: 430px;
+      }
+
+      .hero__image-bg {
+        min-height: 410px;
+      }
+
+      .hero__signal {
+        right: 1rem;
+        bottom: -1rem;
+      }
+
+      .hero__bottom {
+        padding: 1.5rem 2rem;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero__metric {
+        padding-bottom: 1rem;
+      }
+
+      .hero__metric:nth-child(2) {
+        border-right: none;
+      }
+
+      .two-col {
+        grid-template-columns: 1fr;
+      }
     }
 
     body.is-home .mobile-topbar {
@@ -1311,8 +1487,8 @@
         justify-content: space-between;
         height: 64px;
         padding: .75rem 4.5rem .75rem 1rem;
-        background: rgba(255,255,255,.82);
-        border-bottom: 1px solid rgba(15,18,23,.08);
+        background: rgba(255, 255, 255, .82);
+        border-bottom: 1px solid rgba(15, 18, 23, .08);
         backdrop-filter: blur(18px);
       }
 
@@ -1338,7 +1514,7 @@
         color: var(--ink);
         font-size: .72rem;
         font-weight: 800;
-        box-shadow: 0 12px 24px rgba(15,18,23,.12);
+        box-shadow: 0 12px 24px rgba(15, 18, 23, .12);
       }
 
       .sidebar {
@@ -1347,11 +1523,13 @@
         z-index: 180;
         transform: translateX(-105%);
         border-radius: 0 22px 22px 0;
-        box-shadow: 22px 0 65px rgba(15,18,23,.28);
+        box-shadow: 22px 0 65px rgba(15, 18, 23, .28);
         overflow-y: auto;
       }
 
-      .sidebar.open { transform: translateX(0); }
+      .sidebar.open {
+        transform: translateX(0);
+      }
 
       .sidebar__brand {
         padding: 1.75rem 1.35rem 1.35rem;
@@ -1374,8 +1552,8 @@
       }
 
       .nav-link.active {
-        background: rgba(255,255,255,.11);
-        box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
+        background: rgba(255, 255, 255, .11);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .08);
       }
 
       .menu-toggle {
@@ -1385,10 +1563,10 @@
         right: 1rem;
         width: 42px;
         height: 42px;
-        border: 1px solid rgba(255,255,255,.18);
+        border: 1px solid rgba(255, 255, 255, .18);
         border-radius: 10px;
-        background: rgba(15,18,23,.92);
-        box-shadow: 0 14px 28px rgba(15,18,23,.18);
+        background: rgba(15, 18, 23, .92);
+        box-shadow: 0 14px 28px rgba(15, 18, 23, .18);
       }
 
       .main {
@@ -1403,8 +1581,8 @@
       .hero {
         min-height: auto;
         background:
-          linear-gradient(90deg, rgba(15,18,23,.04) 1px, transparent 1px) 0 0 / 34px 34px,
-          linear-gradient(180deg, rgba(15,18,23,.035) 1px, transparent 1px) 0 0 / 34px 34px,
+          linear-gradient(90deg, rgba(15, 18, 23, .04) 1px, transparent 1px) 0 0 / 34px 34px,
+          linear-gradient(180deg, rgba(15, 18, 23, .035) 1px, transparent 1px) 0 0 / 34px 34px,
           #fbfbf7;
       }
 
@@ -1438,7 +1616,9 @@
         margin-bottom: 1.35rem;
       }
 
-      .cta-row { gap: .65rem; }
+      .cta-row {
+        gap: .65rem;
+      }
 
       .btn {
         width: 100%;
@@ -1455,13 +1635,25 @@
       .hero__image-bg {
         min-height: 300px;
         border-radius: 16px;
-        box-shadow: 0 18px 48px rgba(15,18,23,.18);
+        box-shadow: 0 18px 48px rgba(15, 18, 23, .18);
       }
 
-      .hero__accent-stack { top: 1.25rem; left: -.35rem; }
-      .hero__accent-stack span { width: 4.5rem; }
-      .hero__accent-stack span:nth-child(2) { width: 3.75rem; }
-      .hero__accent-stack span:nth-child(3) { width: 5.4rem; }
+      .hero__accent-stack {
+        top: 1.25rem;
+        left: -.35rem;
+      }
+
+      .hero__accent-stack span {
+        width: 4.5rem;
+      }
+
+      .hero__accent-stack span:nth-child(2) {
+        width: 3.75rem;
+      }
+
+      .hero__accent-stack span:nth-child(3) {
+        width: 5.4rem;
+      }
 
       .hero__signal {
         position: relative;
@@ -1484,10 +1676,12 @@
         transform: none;
         border-radius: 14px;
         padding: .82rem .9rem;
-        background: rgba(15,18,23,.82);
+        background: rgba(15, 18, 23, .82);
       }
 
-      .hero__signal-line { grid-template-columns: 64px 1fr auto; }
+      .hero__signal-line {
+        grid-template-columns: 64px 1fr auto;
+      }
 
       .hero__bottom {
         grid-template-columns: 1fr 1fr;
@@ -1501,13 +1695,15 @@
       .hero__metric {
         min-height: 104px;
         padding: 1rem;
-        border: 1px solid rgba(15,18,23,.08) !important;
+        border: 1px solid rgba(15, 18, 23, .08) !important;
         border-radius: 14px;
-        background: rgba(255,255,255,.84);
-        box-shadow: 0 12px 28px rgba(15,18,23,.06);
+        background: rgba(255, 255, 255, .84);
+        box-shadow: 0 12px 28px rgba(15, 18, 23, .06);
       }
 
-      .hero__metric { border-right: none !important; }
+      .hero__metric {
+        border-right: none !important;
+      }
 
       .hero__metric-num {
         font-size: 2rem;
@@ -1519,8 +1715,8 @@
         padding: 6.2rem 1rem 2.2rem;
         border-bottom: 0;
         background:
-          linear-gradient(145deg, rgba(15,18,23,.97), rgba(28,61,90,.92)),
-          radial-gradient(circle at 85% 20%, rgba(217,168,23,.28), transparent 34%);
+          linear-gradient(145deg, rgba(15, 18, 23, .97), rgba(28, 61, 90, .92)),
+          radial-gradient(circle at 85% 20%, rgba(217, 168, 23, .28), transparent 34%);
         color: var(--white);
       }
 
@@ -1529,13 +1725,13 @@
         position: absolute;
         inset: 0;
         background:
-          linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px) 0 0 / 34px 34px,
-          linear-gradient(180deg, rgba(255,255,255,.04) 1px, transparent 1px) 0 0 / 34px 34px;
+          linear-gradient(90deg, rgba(255, 255, 255, .05) 1px, transparent 1px) 0 0 / 34px 34px,
+          linear-gradient(180deg, rgba(255, 255, 255, .04) 1px, transparent 1px) 0 0 / 34px 34px;
         opacity: .55;
         z-index: 1;
       }
 
-      .page-header > * {
+      .page-header>* {
         position: relative;
         z-index: 2;
       }
@@ -1554,7 +1750,7 @@
       }
 
       .page-header p {
-        color: rgba(255,255,255,.74);
+        color: rgba(255, 255, 255, .74);
         font-size: .92rem;
         line-height: 1.65;
         max-width: none;
@@ -1586,11 +1782,11 @@
       }
 
       .stat-cell {
-        border: 1px solid rgba(15,18,23,.08) !important;
+        border: 1px solid rgba(15, 18, 23, .08) !important;
         border-radius: 14px;
         padding: 1.2rem .9rem;
         background: var(--white);
-        box-shadow: 0 12px 26px rgba(15,18,23,.055);
+        box-shadow: 0 12px 26px rgba(15, 18, 23, .055);
       }
 
       .stat-cell__num {
@@ -1611,8 +1807,8 @@
       .ods-card,
       .card-wide {
         border-radius: 16px;
-        border-color: rgba(15,18,23,.08);
-        box-shadow: 0 14px 32px rgba(15,18,23,.055);
+        border-color: rgba(15, 18, 23, .08);
+        box-shadow: 0 14px 32px rgba(15, 18, 23, .055);
       }
 
       .card,
@@ -1697,28 +1893,35 @@
         gap: .9rem;
         padding: 1rem;
         margin-bottom: .75rem;
-        border: 1px solid rgba(15,18,23,.08);
+        border: 1px solid rgba(15, 18, 23, .08);
         border-radius: 16px;
         background: var(--white);
-        box-shadow: 0 12px 26px rgba(15,18,23,.05);
+        box-shadow: 0 12px 26px rgba(15, 18, 23, .05);
       }
 
       .agenda-date__day {
         font-size: 1.85rem;
       }
 
-      .agenda-meta { display: none; }
+      .agenda-meta {
+        display: none;
+      }
 
       .check-list {
         gap: .75rem;
         padding: 1rem;
         border-radius: 16px;
         background: var(--white);
-        box-shadow: 0 12px 26px rgba(15,18,23,.05);
+        box-shadow: 0 12px 26px rgba(15, 18, 23, .05);
       }
 
-      .agenda-item { grid-template-columns: 60px 1fr; }
-      .stat-cell:nth-child(2) { border-right: none; }
+      .agenda-item {
+        grid-template-columns: 60px 1fr;
+      }
+
+      .stat-cell:nth-child(2) {
+        border-right: none;
+      }
 
       #desarrollo .page-header {
         padding-bottom: 4.25rem;
@@ -1751,7 +1954,7 @@
       .overlay {
         z-index: 150;
         backdrop-filter: blur(3px);
-        background: rgba(15,18,23,.46);
+        background: rgba(15, 18, 23, .46);
       }
     }
 
@@ -1769,9 +1972,19 @@
         padding-top: 5.25rem;
       }
 
-      .hero h1 { font-size: 2.55rem; }
-      .hero__signal-line { grid-template-columns: 1fr; gap: .4rem; }
-      .hero__bar { width: 100%; }
+      .hero h1 {
+        font-size: 2.55rem;
+      }
+
+      .hero__signal-line {
+        grid-template-columns: 1fr;
+        gap: .4rem;
+      }
+
+      .hero__bar {
+        width: 100%;
+      }
+
       .hero__bottom {
         grid-template-columns: 1fr 1fr;
         padding: .75rem 1rem 1.15rem;
@@ -1820,7 +2033,10 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
+
+      *,
+      *::before,
+      *::after {
         animation-duration: .001ms !important;
         animation-iteration-count: 1 !important;
         scroll-behavior: auto !important;
@@ -1833,17 +2049,17 @@
       min-height: 100vh;
       grid-template-rows: 1fr auto;
       background:
-        linear-gradient(180deg, rgba(15,18,23,.28), rgba(15,18,23,.76)),
-        linear-gradient(90deg, rgba(15,18,23,.7), rgba(15,18,23,.08) 48%, rgba(15,18,23,.72)),
+        linear-gradient(180deg, rgba(15, 18, 23, .28), rgba(15, 18, 23, .76)),
+        linear-gradient(90deg, rgba(15, 18, 23, .7), rgba(15, 18, 23, .08) 48%, rgba(15, 18, 23, .72)),
         url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1800&q=86') center/cover no-repeat;
       isolation: isolate;
     }
 
     #inicio .hero::before {
       background:
-        radial-gradient(circle at 50% 36%, rgba(255,255,255,.16), transparent 30%),
-        radial-gradient(circle at 18% 28%, rgba(217,168,23,.28), transparent 26%),
-        radial-gradient(circle at 82% 68%, rgba(90,155,196,.24), transparent 28%);
+        radial-gradient(circle at 50% 36%, rgba(255, 255, 255, .16), transparent 30%),
+        radial-gradient(circle at 18% 28%, rgba(217, 168, 23, .28), transparent 26%),
+        radial-gradient(circle at 82% 68%, rgba(90, 155, 196, .24), transparent 28%);
       mix-blend-mode: screen;
       opacity: .78;
     }
@@ -1852,7 +2068,7 @@
       inset: 1.25rem;
       width: auto;
       height: auto;
-      border: 1px solid rgba(255,255,255,.16);
+      border: 1px solid rgba(255, 255, 255, .16);
       border-radius: 24px;
       background: none;
       transform: none;
@@ -1873,7 +2089,7 @@
       display: block;
       width: 14rem;
       height: 14rem;
-      border: 1px solid rgba(255,255,255,.22);
+      border: 1px solid rgba(255, 255, 255, .22);
       border-radius: 50%;
       animation: orbitFloat 12s ease-in-out infinite;
     }
@@ -1881,7 +2097,7 @@
     .hero__ambient span:nth-child(1) {
       left: 8%;
       top: 18%;
-      background: rgba(217,168,23,.08);
+      background: rgba(217, 168, 23, .08);
     }
 
     .hero__ambient span:nth-child(2) {
@@ -1890,7 +2106,7 @@
       width: 8rem;
       height: 8rem;
       animation-delay: -3s;
-      background: rgba(90,155,196,.1);
+      background: rgba(90, 155, 196, .1);
     }
 
     .hero__ambient span:nth-child(3) {
@@ -1899,7 +2115,7 @@
       width: 18rem;
       height: 18rem;
       animation-delay: -6s;
-      background: rgba(183,55,53,.08);
+      background: rgba(183, 55, 53, .08);
     }
 
     #inicio .hero__stage {
@@ -1917,7 +2133,7 @@
     }
 
     #inicio .hero__eyebrow {
-      color: rgba(255,255,255,.78);
+      color: rgba(255, 255, 255, .78);
       margin-bottom: 1.2rem;
       letter-spacing: .24em;
     }
@@ -1933,7 +2149,7 @@
       line-height: .9;
       margin-bottom: 1.25rem;
       text-wrap: balance;
-      text-shadow: 0 22px 55px rgba(0,0,0,.32);
+      text-shadow: 0 22px 55px rgba(0, 0, 0, .32);
     }
 
     #inicio .hero h1 em {
@@ -1944,7 +2160,7 @@
     #inicio .hero__lead {
       max-width: 460px;
       margin-bottom: 1.75rem;
-      color: rgba(255,255,255,.78);
+      color: rgba(255, 255, 255, .78);
       font-size: 1rem;
       line-height: 1.65;
     }
@@ -1953,13 +2169,13 @@
       min-height: 52px;
       padding: 1rem 1.75rem;
       border-radius: 999px;
-      background: rgba(255,255,255,.94);
-      border-color: rgba(255,255,255,.94);
+      background: rgba(255, 255, 255, .94);
+      border-color: rgba(255, 255, 255, .94);
       color: var(--ink);
       font-size: .95rem;
-      box-shadow: 0 18px 42px rgba(0,0,0,.22);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, .22);
       backdrop-filter: blur(16px);
-      animation: fadeUp .7s cubic-bezier(.2,.8,.2,1) .22s both, softPulse 3.4s ease-in-out 1.2s infinite;
+      animation: fadeUp .7s cubic-bezier(.2, .8, .2, 1) .22s both, softPulse 3.4s ease-in-out 1.2s infinite;
     }
 
     .hero__explore:hover {
@@ -1967,7 +2183,7 @@
       border-color: var(--gold);
       color: var(--ink);
       transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 22px 54px rgba(0,0,0,.28);
+      box-shadow: 0 22px 54px rgba(0, 0, 0, .28);
     }
 
     .hero__glass-nav {
@@ -1978,7 +2194,7 @@
       display: flex;
       gap: 1.8rem;
       transform: translateX(-50%);
-      animation: fadeUp .75s cubic-bezier(.2,.8,.2,1) .34s both;
+      animation: fadeUp .75s cubic-bezier(.2, .8, .2, 1) .34s both;
     }
 
     .hero__glass-nav span {
@@ -1986,7 +2202,7 @@
       border: 0;
       border-radius: 0;
       background: transparent;
-      color: rgba(255,255,255,.86);
+      color: rgba(255, 255, 255, .86);
       backdrop-filter: none;
       font-size: 1rem;
       font-weight: 700;
@@ -1998,41 +2214,64 @@
       z-index: 4;
       margin: 0 1.25rem 1.25rem;
       padding: .75rem;
-      border: 1px solid rgba(255,255,255,.14);
+      border: 1px solid rgba(255, 255, 255, .14);
       border-radius: 20px;
-      background: rgba(255,255,255,.11);
+      background: rgba(255, 255, 255, .11);
       backdrop-filter: blur(18px);
-      box-shadow: 0 22px 60px rgba(0,0,0,.24);
+      box-shadow: 0 22px 60px rgba(0, 0, 0, .24);
     }
 
     #inicio .hero__metric {
       padding: .95rem 1.1rem;
-      border-right-color: rgba(255,255,255,.14);
+      border-right-color: rgba(255, 255, 255, .14);
     }
 
     #inicio .hero__metric-num {
       color: var(--white);
       font-size: 2.1rem;
-      text-shadow: 0 12px 28px rgba(0,0,0,.28);
+      text-shadow: 0 12px 28px rgba(0, 0, 0, .28);
     }
 
     #inicio .hero__metric-lbl {
-      color: rgba(255,255,255,.68);
+      color: rgba(255, 255, 255, .68);
     }
 
     @keyframes orbitFloat {
-      0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: .7; }
-      50% { transform: translate3d(18px, -22px, 0) scale(1.08); opacity: .38; }
+
+      0%,
+      100% {
+        transform: translate3d(0, 0, 0) scale(1);
+        opacity: .7;
+      }
+
+      50% {
+        transform: translate3d(18px, -22px, 0) scale(1.08);
+        opacity: .38;
+      }
     }
 
     @keyframes frameGlow {
-      0%, 100% { border-color: rgba(255,255,255,.13); }
-      50% { border-color: rgba(217,168,23,.34); }
+
+      0%,
+      100% {
+        border-color: rgba(255, 255, 255, .13);
+      }
+
+      50% {
+        border-color: rgba(217, 168, 23, .34);
+      }
     }
 
     @keyframes softPulse {
-      0%, 100% { box-shadow: 0 18px 42px rgba(0,0,0,.22); }
-      50% { box-shadow: 0 18px 42px rgba(0,0,0,.22), 0 0 0 9px rgba(255,255,255,.1); }
+
+      0%,
+      100% {
+        box-shadow: 0 18px 42px rgba(0, 0, 0, .22);
+      }
+
+      50% {
+        box-shadow: 0 18px 42px rgba(0, 0, 0, .22), 0 0 0 9px rgba(255, 255, 255, .1);
+      }
     }
 
     @media (max-width: 900px) {
@@ -2056,7 +2295,7 @@
       #inicio .hero {
         min-height: 100dvh;
         background:
-          linear-gradient(180deg, rgba(15,18,23,.2), rgba(15,18,23,.78)),
+          linear-gradient(180deg, rgba(15, 18, 23, .2), rgba(15, 18, 23, .78)),
           url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=84') center/cover no-repeat;
       }
 
@@ -2121,9 +2360,9 @@
       #inicio .hero__metric {
         min-height: 82px;
         padding: .8rem .65rem;
-        border: 1px solid rgba(255,255,255,.12) !important;
+        border: 1px solid rgba(255, 255, 255, .12) !important;
         border-radius: 14px;
-        background: rgba(255,255,255,.09);
+        background: rgba(255, 255, 255, .09);
       }
 
       #inicio .hero__metric-num {
@@ -2164,11 +2403,15 @@
     /* ─── OVERLAY ────────────────────────────────────────────── */
     .overlay {
       display: none;
-      position: fixed; inset: 0;
-      background: rgba(0,0,0,.4);
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .4);
       z-index: 90;
     }
-    .overlay.active { display: block; }
+
+    .overlay.active {
+      display: block;
+    }
 
     /* ─── SECCIONES INTERNAS · MOBILE FIRST ─────────────────── */
     .visual-strip {
@@ -2205,7 +2448,7 @@
       overflow: hidden;
       border-radius: 16px;
       background: var(--ink);
-      box-shadow: 0 18px 42px rgba(15,18,23,.12);
+      box-shadow: 0 18px 42px rgba(15, 18, 23, .12);
       isolation: isolate;
     }
 
@@ -2228,7 +2471,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(15,18,23,.08), rgba(15,18,23,.84));
+      background: linear-gradient(180deg, rgba(15, 18, 23, .08), rgba(15, 18, 23, .84));
       z-index: 2;
     }
 
@@ -2257,7 +2500,7 @@
     }
 
     .visual-card p {
-      color: rgba(255,255,255,.76);
+      color: rgba(255, 255, 255, .76);
       font-size: .82rem;
       line-height: 1.45;
     }
@@ -2275,8 +2518,8 @@
       padding: 1rem;
       border-radius: 16px;
       background: var(--white);
-      box-shadow: 0 14px 32px rgba(15,18,23,.06);
-      border: 1px solid rgba(15,18,23,.08);
+      box-shadow: 0 14px 32px rgba(15, 18, 23, .06);
+      border: 1px solid rgba(15, 18, 23, .08);
     }
 
     .impact-row__num {
@@ -2316,667 +2559,736 @@
     }
   </style>
 </head>
+
 <body class="is-home">
-<div class="layout">
+  <div class="layout">
 
-  <header class="mobile-topbar" aria-hidden="true">
-    <div class="mobile-topbar__brand" style="display: flex; align-items: center; gap: 0.5rem;">
-      <img src="logo.png" alt="RTA Logo" style="height: 24px; width: auto;" />
-      <span>RTA · Red de Talento</span>
-    </div>
-  </header>
-
-  <!-- ── SIDEBAR ───────────────────────────────────────────── -->
-  <aside class="sidebar" id="sidebar">
-    <div class="sidebar__brand">
-      <div class="brand-name" style="padding: 0;">
-        <img src="logo.png" alt="RTA Logo" style="width: 100%; height: auto; max-width: 180px; display: block; margin: 0 auto 1rem;" />
-        <p class="brand-tag" style="text-align: center; width: 100%;">Red de Transporte Aragonés</p>
+    <header class="mobile-topbar" aria-hidden="true">
+      <div class="mobile-topbar__brand" style="display: flex; align-items: center; gap: 0.5rem;">
+        <img src="logo.png" alt="RTA Logo" style="height: 24px; width: auto;" />
+        <span>RTA · Red de Talento</span>
       </div>
-    </div>
+    </header>
 
-    <nav class="sidebar__nav">
-      <p class="nav-section-label">Plataforma</p>
-
-      <a class="nav-link active" data-target="inicio" onclick="navigate('inicio')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        Inicio
-      </a>
-
-      <a class="nav-link" data-target="desarrollo" onclick="navigate('desarrollo')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        Desarrollo y Futuro
-      </a>
-
-      <a class="nav-link" data-target="proyectos" onclick="navigate('proyectos')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-        Proyectos con Propósito
-      </a>
-
-      <p class="nav-section-label">Impacto</p>
-
-      <a class="nav-link" data-target="ods" onclick="navigate('ods')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        Compromiso ODS
-      </a>
-
-      <a class="nav-link" data-target="colaboraciones" onclick="navigate('colaboraciones')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        Colaboraciones Locales
-      </a>
-
-      <a class="nav-link" data-target="comunidad" onclick="navigate('comunidad')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        Comunidad
-      </a>
-    </nav>
-
-    <div class="sidebar__footer">
-      <p>Prototipo interno v1.0<br>Aragón · España · 2025</p>
-    </div>
-  </aside>
-
-  <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
-
-  <!-- ── MOBILE TOGGLE ──────────────────────────────────────── -->
-  <button class="menu-toggle" id="menuToggle" onclick="toggleSidebar()" aria-label="Abrir menú">
-    <span></span><span></span><span></span>
-  </button>
-
-  <!-- ── MAIN ───────────────────────────────────────────────── -->
-  <main class="main">
-
-    <!-- ── INICIO ─────────────────────────────────────────── -->
-    <section id="inicio" class="section active">
-      <div class="hero">
-        <div class="hero__ambient" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-
-        <div class="hero__stage">
-          <div class="hero__top hero__top--center">
-            <p class="hero__eyebrow">RED DE TRANSPORTE ARAGONÉS</p>
-            <h1>RTA<br><em>Talento Aragonés.</em></h1>
-            <p class="hero__lead">Si conectamos Aragón, el talento se queda en Aragón. Un proyecto de Diego Puértolas, Roman Chornobai, Ángel Flórez y Claudia Hernández.</p>
-            <a class="btn btn--primary hero__explore" onclick="navigate('desarrollo')">
-              Ver el Desafío
-            </a>
-          </div>
-
-          <div class="hero__glass-nav" aria-hidden="true">
-            <span onclick="navigate('desarrollo')">Reto</span>
-            <span onclick="navigate('proyectos')">ConectaAragón</span>
-            <span onclick="navigate('ods')">ODS</span>
-            <span onclick="navigate('comunidad')">Equipo</span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ── DESARROLLO Y FUTURO ─────────────────────────────── -->
-    <section id="desarrollo" class="section">
-      <div class="page-header">
-        <p class="page-header__kicker">Contexto · El Desafío</p>
-        <h1>¿Por qué se va el talento?</h1>
-        <p>La fuga de cerebros y la dificultad de emancipación son los retos críticos que RTA viene a solucionar.</p>
-      </div>
-
-      <div class="page-body">
-        <div class="stat-row">
-          <div class="stat-cell">
-            <div class="stat-cell__num">18.46%</div>
-            <div class="stat-cell__label">Desempleo juvenil en Aragón</div>
-          </div>
-          <div class="stat-cell">
-            <div class="stat-cell__num">43%</div>
-            <div class="stat-cell__label">Jóvenes emigran para puestos cualificados</div>
-          </div>
-          <div class="stat-cell">
-            <div class="stat-cell__num">17.3%</div>
-            <div class="stat-cell__label">Tasa de emancipación (frente al 31.9% UE)</div>
-          </div>
-          <div class="stat-cell">
-            <div class="stat-cell__num">93.9%</div>
-            <div class="stat-cell__label">Del salario neto dedicado al alquiler</div>
-          </div>
-        </div>
-
-
-
-        <div class="quick-grid">
-          <div class="visual-card">
-            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80" alt="Formación" />
-            <div class="visual-card__body">
-              <p class="visual-card__tag">Formación</p>
-              <h3>Aprendizaje estructurado y autodirigido</h3>
-              <p>Planes trimestrales, certificaciones y soft skills.</p>
-            </div>
-          </div>
-          <div class="visual-card">
-            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=900&q=80" alt="Inteligencia Artificial" />
-            <div class="visual-card__body">
-              <p class="visual-card__tag">IA aplicada</p>
-              <h3>IA como copiloto, no como amenaza</h3>
-              <p>Herramientas reales dentro del trabajo diario.</p>
-            </div>
-          </div>
-          <div class="visual-card">
-            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80" alt="Evolución interna" />
-            <div class="visual-card__body">
-              <p class="visual-card__tag">Carrera</p>
-              <h3>Planes de carrera transparentes</h3>
-              <p>Bandas claras, revisiones semestrales e impacto medible.</p>
-            </div>
-          </div>
-          <div class="visual-card">
-            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80" alt="Cultura de experimentación" />
-            <div class="visual-card__body">
-              <p class="visual-card__tag">Experimentación</p>
-              <h3>Espacio para la innovación interna</h3>
-              <p>10% del tiempo para ideas, prototipos y hackathons.</p>
-            </div>
-          </div>
+    <!-- ── SIDEBAR ───────────────────────────────────────────── -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__brand">
+        <div class="brand-name" style="padding: 0;">
+          <img src="logo.png" alt="RTA Logo"
+            style="width: 100%; height: auto; max-width: 180px; display: block; margin: 0 auto 1rem;" />
+          <p class="brand-tag" style="text-align: center; width: 100%;">Red de Transporte Aragonés</p>
         </div>
       </div>
-    </section>
 
-    <!-- ── PROYECTOS CON PROPÓSITO ─────────────────────────── -->
-    <section id="proyectos" class="section">
-      <div class="page-header">
-        <p class="page-header__kicker">ConectaAragón · El Propósito</p>
-        <h1>Conectar el talento con la tierra.</h1>
-        <p>Nuestra función principal es diseñar y supervisar la red para que nuestra flota de transporte propio opere bajo una red unificada, formada por los municipios que apuestan por nuestro servicio.</p>
+      <nav class="sidebar__nav">
+        <p class="nav-section-label">Plataforma</p>
+
+        <a class="nav-link active" data-target="inicio" onclick="navigate('inicio')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+            <polyline points="9 22 9 12 15 12 15 22" />
+          </svg>
+          Inicio
+        </a>
+
+        <a class="nav-link" data-target="desarrollo" onclick="navigate('desarrollo')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
+          Desarrollo y Futuro
+        </a>
+
+        <a class="nav-link" data-target="proyectos" onclick="navigate('proyectos')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <rect x="3" y="3" width="7" height="7" />
+            <rect x="14" y="3" width="7" height="7" />
+            <rect x="14" y="14" width="7" height="7" />
+            <rect x="3" y="14" width="7" height="7" />
+          </svg>
+          Proyectos con Propósito
+        </a>
+
+        <p class="nav-section-label">Impacto</p>
+
+        <a class="nav-link" data-target="ods" onclick="navigate('ods')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M12 2L2 7l10 5 10-5-10-5z" />
+            <path d="M2 17l10 5 10-5" />
+            <path d="M2 12l10 5 10-5" />
+          </svg>
+          Compromiso ODS
+        </a>
+
+        <a class="nav-link" data-target="colaboraciones" onclick="navigate('colaboraciones')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+          Colaboraciones Locales
+        </a>
+
+        <a class="nav-link" data-target="comunidad" onclick="navigate('comunidad')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="3" y1="10" x2="21" y2="10" />
+          </svg>
+          Comunidad
+        </a>
+      </nav>
+
+      <div class="sidebar__footer">
+        <p>Prototipo interno v1.0<br>Aragón · España · 2025</p>
       </div>
+    </aside>
 
-      <div class="page-body">
-        <div class="quick-grid">
-          <!-- Card 1: El Territorio -->
-          <div class="visual-card">
-            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80" alt="Aragón Rural" />
-            <div class="visual-card__body">
-              <p class="visual-card__tag">El Territorio</p>
-              <h3>Vivir donde quieras</h3>
-              <p>Eliminamos las barreras geográficas. ConectaAragón permite que el talento joven se asiente en el Pirineo, el Sistema Ibérico o cualquier pueblo aragonés sin renunciar a la movilidad.</p>
+    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+    <!-- ── MOBILE TOGGLE ──────────────────────────────────────── -->
+    <button class="menu-toggle" id="menuToggle" onclick="toggleSidebar()" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- ── MAIN ───────────────────────────────────────────────── -->
+    <main class="main">
+
+      <!-- ── INICIO ─────────────────────────────────────────── -->
+      <section id="inicio" class="section active">
+        <div class="hero">
+          <div class="hero__ambient" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <div class="hero__stage">
+            <div class="hero__top hero__top--center">
+              <p class="hero__eyebrow">RED DE TRANSPORTE ARAGONÉS</p>
+              <h1>RTA<br><em>Talento Aragonés.</em></h1>
+              <p class="hero__lead">Si conectamos Aragón, el talento se queda en Aragón. Un proyecto de Diego Puértolas,
+                Roman Chornobai, Ángel Flórez y Claudia Hernández.</p>
+              <a class="btn btn--primary hero__explore" onclick="navigate('desarrollo')">
+                Ver el Desafío
+              </a>
+            </div>
+
+            <div class="hero__glass-nav" aria-hidden="true">
+              <span onclick="navigate('desarrollo')">Compromiso</span>
+              <span onclick="navigate('proyectos')">ConectaAragón</span>
+              <span onclick="navigate('ods')">ODS</span>
+              <span onclick="navigate('comunidad')">Equipo</span>
             </div>
           </div>
 
-          <!-- Card 2: La Tecnología -->
-          <div class="visual-card">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="IA Movilidad" />
-            <div class="visual-card__body">
-              <p class="visual-card__tag">La Tecnología</p>
-              <h3>IA a la demanda</h3>
-              <p>Algoritmos de optimización que coordinan nuestra flota propia en tiempo real, adaptándose a las necesidades reales de cada municipio y usuario.</p>
-              <span class="badge badge--accent">Eficiencia 100%</span>
-            </div>
-          </div>
-
-          <!-- Card 3: La Flota -->
-          <div class="visual-card">
-            <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80" alt="Transporte RTA" />
-            <div class="visual-card__body">
-              <p class="visual-card__tag">La Flota</p>
-              <h3>Red Unificada</h3>
-              <p>Gestionamos una red de transporte propia y convenios con ayuntamientos para garantizar un servicio premium, puntual y conectado.</p>
-              <span class="badge">Flota Propia</span>
-            </div>
-          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ── COMPROMISO ODS ──────────────────────────────────── -->
-    <section id="ods" class="section">
-      <div class="page-header">
-        <p class="page-header__kicker">Compromiso ODS</p>
-        <h1>Impacto en el Territorio.</h1>
-        <p>Tres objetivos prioritarios para una Red de Talento sostenible.</p>
-      </div>
-
-      <div class="page-body">
-        <div class="quick-grid" style="margin-top: 2rem;">
-          <!-- ODS 3 -->
-          <div class="partner-card">
-            <div style="margin-bottom: 1rem;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#b73735" stroke-width="2" style="width:32px; height:32px;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-            </div>
-            <p class="partner-card__sector">ODS 3</p>
-            <h3>Salud y Bienestar</h3>
-            <p>Instalaciones premium y salud preventiva para que el equipo rinda al máximo sin estrés.</p>
-          </div>
-
-          <!-- ODS 8 -->
-          <div class="partner-card">
-            <div style="margin-bottom: 1rem;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#d9a817" stroke-width="2" style="width:32px; height:32px;"><path d="M12 20V10M18 20V4M6 20v-4"></path></svg>
-            </div>
-            <p class="partner-card__sector">ODS 8</p>
-            <h3>Trabajo Decente</h3>
-            <p>Salarios competitivos y flexibilidad absoluta para retener el talento joven en Aragón.</p>
-          </div>
-
-          <!-- ODS 9 -->
-          <div class="partner-card">
-            <div style="margin-bottom: 1rem;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#1c3d5a" stroke-width="2" style="width:32px; height:32px;"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-            </div>
-            <p class="partner-card__sector">ODS 9</p>
-            <h3>Innovación e IA</h3>
-            <p>Infraestructura inteligente y tecnología aplicada para transformar el tejido empresarial rural.</p>
-          </div>
-
-          <!-- ODS 10 -->
-          <div class="partner-card">
-            <div style="margin-bottom: 1rem;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#2e5475" stroke-width="2" style="width:32px; height:32px;"><line x1="5" y1="9" x2="19" y2="9"></line><line x1="5" y1="15" x2="19" y2="15"></line></svg>
-            </div>
-            <p class="partner-card__sector">ODS 10</p>
-            <h3>Reducción de Desigualdad</h3>
-            <p>Empoderamos a los jóvenes con el Comité Sombra y Mentoring Inverso para nivelar la toma de decisiones.</p>
-          </div>
-
-          <!-- ODS 11 -->
-          <div class="partner-card">
-            <div style="margin-bottom: 1rem;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#1c3d5a" stroke-width="2" style="width:32px; height:32px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-            </div>
-            <p class="partner-card__sector">ODS 11</p>
-            <h3>Comunidades Sostenibles</h3>
-            <p>Movilidad conectada que revitaliza los pueblos y detiene la despoblación.</p>
-          </div>
-
-          <!-- ODS 13 -->
-          <div class="partner-card">
-            <div style="margin-bottom: 1rem;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#2d6a4f" stroke-width="2" style="width:32px; height:32px;"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path><path d="M12 6a6 6 0 0 0-6 6h12a6 6 0 0 0-6-6z"></path></svg>
-            </div>
-            <p class="partner-card__sector">ODS 13</p>
-            <h3>Acción Climática</h3>
-            <p>Eficiencia energética y rutas optimizadas para una huella de carbono mínima.</p>
-          </div>
+      <!-- ── DESARROLLO Y FUTURO ─────────────────────────────── -->
+      <section id="desarrollo" class="section">
+        <div class="page-header">
+          <p class="page-header__kicker">Contexto · El Desafío</p>
+          <h1>¿Por qué se va el talento?</h1>
+          <p>La fuga de cerebros y la dificultad de emancipación son los retos críticos que RTA viene a solucionar.</p>
         </div>
 
-        <div class="ods-charts-grid">
-          <div class="chart-card">
-            <div class="chart-card__head">
-              <div>
-                <p class="chart-card__label">Laboral & Social</p>
-                <h3>Aragón frente a Europa</h3>
+        <div class="page-body">
+          <div class="stat-row">
+            <div class="stat-cell">
+              <div class="stat-cell__num">18.46%</div>
+              <div class="stat-cell__label">Desempleo juvenil en Aragón</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-cell__num">43%</div>
+              <div class="stat-cell__label">Jóvenes emigran para puestos cualificados</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-cell__num">17.3%</div>
+              <div class="stat-cell__label">Tasa de emancipación (frente al 31.9% UE)</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-cell__num">93.9%</div>
+              <div class="stat-cell__label">Del salario neto dedicado al alquiler</div>
+            </div>
+          </div>
+
+
+
+          <div class="quick-grid">
+            <div class="visual-card">
+              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
+                alt="Formación" />
+              <div class="visual-card__body">
+                <p class="visual-card__tag">Formación</p>
+                <h3>Aprendizaje estructurado y autodirigido</h3>
+                <p>Planes trimestrales, certificaciones y soft skills.</p>
               </div>
-              <span class="chart-card__meta">Desafío 2025</span>
             </div>
-            <div class="chart-card__canvas">
-              <canvas id="impactChart"></canvas>
-            </div>
-          </div>
-          <div class="chart-card">
-            <div class="chart-card__head">
-              <div>
-                <p class="chart-card__label">Talento</p>
-                <h3>Fuga vs Atracción de Cerebros</h3>
+            <div class="visual-card">
+              <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=900&q=80"
+                alt="Inteligencia Artificial" />
+              <div class="visual-card__body">
+                <p class="visual-card__tag">IA aplicada</p>
+                <h3>IA como copiloto, no como amenaza</h3>
+                <p>Herramientas reales dentro del trabajo diario.</p>
               </div>
-              <span class="chart-card__meta">Balance Negativo</span>
             </div>
-            <div class="chart-card__canvas">
-              <canvas id="carbonChart"></canvas>
+            <div class="visual-card">
+              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80"
+                alt="Evolución interna" />
+              <div class="visual-card__body">
+                <p class="visual-card__tag">Carrera</p>
+                <h3>Planes de carrera transparentes</h3>
+                <p>Bandas claras, revisiones semestrales e impacto medible.</p>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── COLABORACIONES LOCALES ──────────────────────────── -->
-    <section id="colaboraciones" class="section">
-      <div class="page-header">
-        <p class="page-header__kicker">Beneficios RTA · Condiciones Fundamentales</p>
-        <h1>Cuidamos lo que importa.</h1>
-
-
-        <div class="quick-grid">
-          <div class="visual-card">
-            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80" alt="Piscina y Gimnasio" />
-            <div class="visual-card__body">
-              <p class="visual-card__tag">Instalaciones</p>
-              <h3>Piscina y Gimnasio</h3>
-              <p>Disponibles en la sede central para fomentar el bienestar sin desplazamientos.</p>
-              <div class="partner-card__benefit">Bienestar físico incluido</div>
-            </div>
-          </div>
-          <div class="visual-card">
-            <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=800&q=80" alt="Biblioteca y Solar" />
-            <div class="visual-card__body">
-              <p class="visual-card__tag">Espacios</p>
-              <h3>Biblioteca y Solar</h3>
-              <p>Espacios modernos y colaborativos para el estudio y el descanso.</p>
-              <div class="partner-card__benefit">Espacios de alto rendimiento</div>
-            </div>
-          </div>
-          <div class="visual-card">
-            <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=800&q=80" alt="Salud" />
-            <div class="visual-card__body">
-              <p class="visual-card__tag">Salud</p>
-              <h3>Reconocimientos Médicos</h3>
-              <p>Seguimiento de salud preventivo para todo el equipo de RTA.</p>
-              <div class="partner-card__benefit">Salud prioritaria</div>
-            </div>
-          </div>
-          <div class="visual-card">
-            <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80" alt="Cultura" />
-            <div class="visual-card__body">
-              <p class="visual-card__tag">Cultura</p>
-              <h3>Ambiente Familiar</h3>
-              <p>Un entorno joven, cercano y colaborativo donde todos sumamos.</p>
-              <div class="partner-card__benefit">Cultura de equipo</div>
-            </div>
-          </div>
-          <div class="visual-card">
-            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80" alt="Formación" />
-            <div class="visual-card__body">
-              <p class="visual-card__tag">Desarrollo</p>
-              <h3>Formación Continua</h3>
-              <p>Programas de formación interna para nunca dejar de aprender.</p>
-              <div class="partner-card__benefit">Crecimiento profesional</div>
-            </div>
-          </div>
-          <div class="visual-card">
-            <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80" alt="Modelo Híbrido" />
-            <div class="visual-card__body">
-              <p class="visual-card__tag">Flexibilidad</p>
-              <h3>Modelo Híbrido</h3>
-              <p>Adaptabilidad total para que tu trabajo encaje en tu vida.</p>
-              <div class="partner-card__benefit">Conciliación real</div>
+            <div class="visual-card">
+              <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80"
+                alt="Cultura de experimentación" />
+              <div class="visual-card__body">
+                <p class="visual-card__tag">Experimentación</p>
+                <h3>Espacio para la innovación interna</h3>
+                <p>10% del tiempo para ideas, prototipos y hackathons.</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ── COMUNIDAD ───────────────────────────────────────── -->
-    <section id="comunidad" class="section">
-      <div class="page-header">
-        <p class="page-header__kicker">Equipo · Red de Talento Aragonés</p>
-        <h1>Quiénes somos.</h1>
-        <p>Un equipo multidisciplinar unido por un objetivo: Aragón.</p>
-      </div>
-
-      <div class="page-body">
-        <div class="quick-grid" style="margin-bottom: 3rem; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-          <div class="card" style="text-align: center; padding: 1.5rem;">
-            <h3 style="margin: 0;">Diego Puértolas</h3>
-            <p style="margin: 0.5rem 0 0;">Cofundador RTA</p>
-          </div>
-          <div class="card" style="text-align: center; padding: 1.5rem;">
-            <h3 style="margin: 0;">Roman Chornobai</h3>
-            <p style="margin: 0.5rem 0 0;">Cofundador RTA</p>
-          </div>
-          <div class="card" style="text-align: center; padding: 1.5rem;">
-            <h3 style="margin: 0;">Ángel Flórez</h3>
-            <p style="margin: 0.5rem 0 0;">Cofundador RTA</p>
-          </div>
-          <div class="card" style="text-align: center; padding: 1.5rem;">
-            <h3 style="margin: 0;">Claudia Hernández</h3>
-            <p style="margin: 0.5rem 0 0;">Cofundadora RTA</p>
-          </div>
+      <!-- ── PROYECTOS CON PROPÓSITO ─────────────────────────── -->
+      <section id="proyectos" class="section">
+        <div class="page-header">
+          <p class="page-header__kicker">ConectaAragón · El Propósito</p>
+          <h1>Conectar el talento con la tierra.</h1>
+          <p>Nuestra función principal es diseñar y supervisar la red para que nuestra flota de transporte propio opere
+            bajo una red unificada, formada por los municipios que apuestan por nuestro servicio.</p>
         </div>
 
-        <div class="quote-block">
-          <p>"No solo te damos un empleo; te damos las herramientas para que tú mismo salves a tu propia comunidad de la despoblación."</p>
-          <cite>Equipo RTA · Red de Talento Aragonés</cite>
+        <div class="page-body">
+          <div class="quick-grid">
+            <!-- Card 1: El Territorio -->
+            <div class="visual-card">
+              <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80"
+                alt="Aragón Rural" />
+              <div class="visual-card__body">
+                <p class="visual-card__tag">El Territorio</p>
+                <h3>Vivir donde quieras</h3>
+                <p>Eliminamos las barreras geográficas. ConectaAragón permite que el talento joven se asiente en el
+                  Pirineo, el Sistema Ibérico o cualquier pueblo aragonés sin renunciar a la movilidad.</p>
+              </div>
+            </div>
+
+            <!-- Card 2: La Tecnología -->
+            <div class="visual-card">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
+                alt="IA Movilidad" />
+              <div class="visual-card__body">
+                <p class="visual-card__tag">La Tecnología</p>
+                <h3>IA a la demanda</h3>
+                <p>Algoritmos de optimización que coordinan nuestra flota propia en tiempo real, adaptándose a las
+                  necesidades reales de cada municipio y usuario.</p>
+                <span class="badge badge--accent">Eficiencia 100%</span>
+              </div>
+            </div>
+
+            <!-- Card 3: La Flota -->
+            <div class="visual-card">
+              <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80"
+                alt="Transporte RTA" />
+              <div class="visual-card__body">
+                <p class="visual-card__tag">La Flota</p>
+                <h3>Red Unificada</h3>
+                <p>Gestionamos una red de transporte propia y convenios con ayuntamientos para garantizar un servicio
+                  premium, puntual y conectado.</p>
+                <span class="badge">Flota Propia</span>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-  </main>
-</div>
+      <!-- ── COMPROMISO ODS ──────────────────────────────────── -->
+      <section id="ods" class="section">
+        <div class="page-header">
+          <p class="page-header__kicker">Compromiso ODS</p>
+          <h1>Impacto en el Territorio.</h1>
+          <p>Tres objetivos prioritarios para una Red de Talento sostenible.</p>
+        </div>
 
-<script>
-  // ── NAVIGATION ─────────────────────────────────────────────
-  function navigate(id) {
-    // Hide all sections
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-    // Show target
-    const target = document.getElementById(id);
-    if (target) target.classList.add('active');
-    document.body.classList.toggle('is-home', id === 'inicio');
+        <div class="page-body">
+          <div class="quick-grid" style="margin-top: 2rem;">
+            <!-- ODS 3 -->
+            <div class="partner-card">
+              <div style="margin-bottom: 1rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#b73735" stroke-width="2" style="width:32px; height:32px;">
+                  <path
+                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                  </path>
+                </svg>
+              </div>
+              <p class="partner-card__sector">ODS 3</p>
+              <h3>Salud y Bienestar</h3>
+              <p>Instalaciones premium y salud preventiva para que el equipo rinda al máximo sin estrés.</p>
+            </div>
 
-    // Update nav links
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.classList.toggle('active', link.dataset.target === id);
-    });
+            <!-- ODS 8 -->
+            <div class="partner-card">
+              <div style="margin-bottom: 1rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#d9a817" stroke-width="2" style="width:32px; height:32px;">
+                  <path d="M12 20V10M18 20V4M6 20v-4"></path>
+                </svg>
+              </div>
+              <p class="partner-card__sector">ODS 8</p>
+              <h3>Trabajo Decente</h3>
+              <p>Salarios competitivos y flexibilidad absoluta para retener el talento joven en Aragón.</p>
+            </div>
 
-    // Close mobile sidebar
-    closeSidebar();
+            <!-- ODS 9 -->
+            <div class="partner-card">
+              <div style="margin-bottom: 1rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#1c3d5a" stroke-width="2" style="width:32px; height:32px;">
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <path
+                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                  </path>
+                </svg>
+              </div>
+              <p class="partner-card__sector">ODS 9</p>
+              <h3>Innovación e IA</h3>
+              <p>Infraestructura inteligente y tecnología aplicada para transformar el tejido empresarial rural.</p>
+            </div>
 
-    // Scroll to top
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  }
+            <!-- ODS 10 -->
+            <div class="partner-card">
+              <div style="margin-bottom: 1rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#2e5475" stroke-width="2" style="width:32px; height:32px;">
+                  <line x1="5" y1="9" x2="19" y2="9"></line>
+                  <line x1="5" y1="15" x2="19" y2="15"></line>
+                </svg>
+              </div>
+              <p class="partner-card__sector">ODS 10</p>
+              <h3>Reducción de Desigualdad</h3>
+              <p>Empoderamos a los jóvenes con el Comité Sombra y Mentoring Inverso para nivelar la toma de decisiones.
+              </p>
+            </div>
 
-  // ── MOBILE SIDEBAR ─────────────────────────────────────────
-  function toggleSidebar() {
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay');
-    sidebar.classList.toggle('open');
-    overlay.classList.toggle('active');
-  }
+            <!-- ODS 11 -->
+            <div class="partner-card">
+              <div style="margin-bottom: 1rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#1c3d5a" stroke-width="2" style="width:32px; height:32px;">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+              </div>
+              <p class="partner-card__sector">ODS 11</p>
+              <h3>Comunidades Sostenibles</h3>
+              <p>Movilidad conectada que revitaliza los pueblos y detiene la despoblación.</p>
+            </div>
 
-  function openExploreMenu() {
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay');
-    sidebar.classList.add('menu-focus');
+            <!-- ODS 13 -->
+            <div class="partner-card">
+              <div style="margin-bottom: 1rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#2d6a4f" stroke-width="2" style="width:32px; height:32px;">
+                  <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path>
+                  <path d="M12 6a6 6 0 0 0-6 6h12a6 6 0 0 0-6-6z"></path>
+                </svg>
+              </div>
+              <p class="partner-card__sector">ODS 13</p>
+              <h3>Acción Climática</h3>
+              <p>Eficiencia energética y rutas optimizadas para una huella de carbono mínima.</p>
+            </div>
+          </div>
 
-    if (window.matchMedia('(max-width: 680px)').matches) {
-      sidebar.classList.add('open');
-      overlay.classList.add('active');
-    } else {
-      sidebar.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          <div class="ods-charts-grid">
+            <div class="chart-card">
+              <div class="chart-card__head">
+                <div>
+                  <p class="chart-card__label">Laboral & Social</p>
+                  <h3>Aragón frente a Europa</h3>
+                </div>
+                <span class="chart-card__meta">Desafío 2025</span>
+              </div>
+              <div class="chart-card__canvas">
+                <canvas id="impactChart"></canvas>
+              </div>
+            </div>
+            <div class="chart-card">
+              <div class="chart-card__head">
+                <div>
+                  <p class="chart-card__label">Talento</p>
+                  <h3>Fuga vs Atracción de Cerebros</h3>
+                </div>
+                <span class="chart-card__meta">Balance Negativo</span>
+              </div>
+              <div class="chart-card__canvas">
+                <canvas id="carbonChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── COLABORACIONES LOCALES ──────────────────────────── -->
+      <section id="colaboraciones" class="section">
+        <div class="page-header">
+          <p class="page-header__kicker">Beneficios RTA · Condiciones Fundamentales</p>
+          <h1>Cuidamos lo que importa.</h1>
+
+
+          <div class="quick-grid">
+            <div class="visual-card">
+              <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80"
+                alt="Piscina y Gimnasio" />
+              <div class="visual-card__body">
+                <p class="visual-card__tag">Instalaciones</p>
+                <h3>Piscina y Gimnasio</h3>
+                <p>Disponibles en la sede central para fomentar el bienestar sin desplazamientos.</p>
+                <div class="partner-card__benefit">Bienestar físico incluido</div>
+              </div>
+            </div>
+            <div class="visual-card">
+              <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=800&q=80"
+                alt="Biblioteca y Solar" />
+              <div class="visual-card__body">
+                <p class="visual-card__tag">Espacios</p>
+                <h3>Biblioteca y Solar</h3>
+                <p>Espacios modernos y colaborativos para el estudio y el descanso.</p>
+                <div class="partner-card__benefit">Espacios de alto rendimiento</div>
+              </div>
+            </div>
+            <div class="visual-card">
+              <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=800&q=80"
+                alt="Salud" />
+              <div class="visual-card__body">
+                <p class="visual-card__tag">Salud</p>
+                <h3>Reconocimientos Médicos</h3>
+                <p>Seguimiento de salud preventivo para todo el equipo de RTA.</p>
+                <div class="partner-card__benefit">Salud prioritaria</div>
+              </div>
+            </div>
+            <div class="visual-card">
+              <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80"
+                alt="Cultura" />
+              <div class="visual-card__body">
+                <p class="visual-card__tag">Cultura</p>
+                <h3>Ambiente Familiar</h3>
+                <p>Un entorno joven, cercano y colaborativo donde todos sumamos.</p>
+                <div class="partner-card__benefit">Cultura de equipo</div>
+              </div>
+            </div>
+            <div class="visual-card">
+              <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80"
+                alt="Formación" />
+              <div class="visual-card__body">
+                <p class="visual-card__tag">Desarrollo</p>
+                <h3>Formación Continua</h3>
+                <p>Programas de formación interna para nunca dejar de aprender.</p>
+                <div class="partner-card__benefit">Crecimiento profesional</div>
+              </div>
+            </div>
+            <div class="visual-card">
+              <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80"
+                alt="Modelo Híbrido" />
+              <div class="visual-card__body">
+                <p class="visual-card__tag">Flexibilidad</p>
+                <h3>Modelo Híbrido</h3>
+                <p>Adaptabilidad total para que tu trabajo encaje en tu vida.</p>
+                <div class="partner-card__benefit">Conciliación real</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── COMUNIDAD ───────────────────────────────────────── -->
+      <section id="comunidad" class="section">
+        <div class="page-header">
+          <p class="page-header__kicker">Equipo · Red de Talento Aragonés</p>
+          <h1>Quiénes somos.</h1>
+          <p>Un equipo multidisciplinar unido por un objetivo: Aragón.</p>
+        </div>
+
+        <div class="page-body">
+          <div class="quick-grid"
+            style="margin-bottom: 3rem; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+            <div class="card" style="text-align: center; padding: 1.5rem;">
+              <h3 style="margin: 0;">Diego Puértolas</h3>
+              <p style="margin: 0.5rem 0 0;">Cofundador RTA</p>
+            </div>
+            <div class="card" style="text-align: center; padding: 1.5rem;">
+              <h3 style="margin: 0;">Roman Chornobai</h3>
+              <p style="margin: 0.5rem 0 0;">Cofundador RTA</p>
+            </div>
+            <div class="card" style="text-align: center; padding: 1.5rem;">
+              <h3 style="margin: 0;">Ángel Flórez</h3>
+              <p style="margin: 0.5rem 0 0;">Cofundador RTA</p>
+            </div>
+            <div class="card" style="text-align: center; padding: 1.5rem;">
+              <h3 style="margin: 0;">Claudia Hernández</h3>
+              <p style="margin: 0.5rem 0 0;">Cofundadora RTA</p>
+            </div>
+          </div>
+
+          <div class="quote-block">
+            <p>"No solo te damos un empleo; te damos las herramientas para que tú mismo salves a tu propia comunidad de
+              la despoblación."</p>
+            <cite>Equipo RTA · Red de Talento Aragonés</cite>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    // ── NAVIGATION ─────────────────────────────────────────────
+    function navigate(id) {
+      // Hide all sections
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      // Show target
+      const target = document.getElementById(id);
+      if (target) target.classList.add('active');
+      document.body.classList.toggle('is-home', id === 'inicio');
+
+      // Update nav links
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.toggle('active', link.dataset.target === id);
+      });
+
+      // Close mobile sidebar
+      closeSidebar();
+
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'instant' });
     }
 
-    setTimeout(() => sidebar.classList.remove('menu-focus'), 1200);
-  }
+    // ── MOBILE SIDEBAR ─────────────────────────────────────────
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('overlay');
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('active');
+    }
 
-  function closeSidebar() {
-    document.getElementById('sidebar').classList.remove('open');
-    document.getElementById('overlay').classList.remove('active');
-  }
+    function openExploreMenu() {
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('overlay');
+      sidebar.classList.add('menu-focus');
 
-  // ── ANIMATE PROGRESS BARS ON SECTION SHOW ──────────────────
-  function initProgressBars() {
-    document.querySelectorAll('.progress-fill').forEach(bar => {
-      const target = bar.style.width;
-      bar.style.width = '0%';
-      setTimeout(() => { bar.style.width = target; }, 100);
-    });
-  }
+      if (window.matchMedia('(max-width: 680px)').matches) {
+        sidebar.classList.add('open');
+        overlay.classList.add('active');
+      } else {
+        sidebar.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
 
-  // ── INIT CHARTS ──────────────────────────────────────────────
-  function initCharts() {
-    const ctx1 = document.getElementById('impactChart');
-    if (ctx1 && !ctx1.chart) {
-      const chartContext = ctx1.getContext('2d');
-      const barGradient = chartContext.createLinearGradient(0, 0, 0, 250);
-      barGradient.addColorStop(0, '#1c3d5a');
-      barGradient.addColorStop(1, '#5a9bc4');
+      setTimeout(() => sidebar.classList.remove('menu-focus'), 1200);
+    }
 
-      ctx1.chart = new Chart(ctx1, {
-        type: 'bar',
-        data: {
-          labels: ['Desempleo (Aragón)', 'Desempleo (EU)', 'Emancipación (Aragón)', 'Emancipación (EU)'],
-          datasets: [
-            {
-              type: 'bar',
-              label: 'Porcentaje %',
-              data: [18.46, 15.3, 17.3, 31.9],
-              backgroundColor: barGradient,
-              borderColor: 'rgba(28,61,90,.2)',
-              borderWidth: 1,
-              borderRadius: 8,
-              borderSkipped: false,
-              barPercentage: .58,
-              categoryPercentage: .68
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          animation: { duration: 1100, easing: 'easeOutQuart' },
-          interaction: { intersect: false, mode: 'index' },
-          plugins: {
-            legend: {
-              display: true,
-              align: 'end',
-              labels: {
-                boxWidth: 8,
-                boxHeight: 8,
-                usePointStyle: true,
-                color: '#4a5260',
-                font: { family: 'DM Sans', size: 11, weight: 500 }
-              }
-            },
-            tooltip: {
-              backgroundColor: '#0f1217',
-              titleColor: '#ffffff',
-              bodyColor: 'rgba(255,255,255,.82)',
-              borderColor: 'rgba(255,255,255,.12)',
-              borderWidth: 1,
-              padding: 12,
-              displayColors: false,
-              callbacks: {
-                label: context => `${context.dataset.label}: ${context.parsed.y}%`
-              }
-            }
-          },
-          scales: {
-            x: {
-              grid: { display: false },
-              border: { display: false },
-              ticks: {
-                color: '#6b7280',
-                font: { family: 'DM Sans', size: 11, weight: 500 }
-              }
-            },
-            y: {
-              beginAtZero: true,
-              max: 100,
-              border: { display: false },
-              grid: { color: 'rgba(15,18,23,.07)', drawTicks: false },
-              ticks: {
-                color: '#8a929e',
-                stepSize: 25,
-                padding: 10,
-                callback: value => `${value}%`,
-                font: { family: 'DM Sans', size: 11 }
-              }
-            }
-          }
-        }
+    function closeSidebar() {
+      document.getElementById('sidebar').classList.remove('open');
+      document.getElementById('overlay').classList.remove('active');
+    }
+
+    // ── ANIMATE PROGRESS BARS ON SECTION SHOW ──────────────────
+    function initProgressBars() {
+      document.querySelectorAll('.progress-fill').forEach(bar => {
+        const target = bar.style.width;
+        bar.style.width = '0%';
+        setTimeout(() => { bar.style.width = target; }, 100);
       });
     }
 
-    const ctx2 = document.getElementById('carbonChart');
-    if (ctx2 && !ctx2.chart) {
-      const carbonContext = ctx2.getContext('2d');
-      const areaGradient = carbonContext.createLinearGradient(0, 0, 0, 250);
-      areaGradient.addColorStop(0, 'rgba(90,155,196,.28)');
-      areaGradient.addColorStop(.62, 'rgba(217,168,23,.1)');
-      areaGradient.addColorStop(1, 'rgba(255,255,255,0)');
+    // ── INIT CHARTS ──────────────────────────────────────────────
+    function initCharts() {
+      const ctx1 = document.getElementById('impactChart');
+      if (ctx1 && !ctx1.chart) {
+        const chartContext = ctx1.getContext('2d');
+        const barGradient = chartContext.createLinearGradient(0, 0, 0, 250);
+        barGradient.addColorStop(0, '#1c3d5a');
+        barGradient.addColorStop(1, '#5a9bc4');
 
-      ctx2.chart = new Chart(ctx2, {
-        type: 'bar',
-        data: {
-          labels: ['Exportación Talento', 'Atracción Talento'],
-          datasets: [
-            {
-              label: 'Cualificación Alta %',
-              data: [43, 11.3],
-              backgroundColor: ['#b73735', '#5a9bc4'],
-              borderRadius: 8,
-              barPercentage: .5
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          animation: { duration: 1200, easing: 'easeOutQuart' },
-          interaction: { intersect: false, mode: 'index' },
-          plugins: {
-            legend: {
-              display: true,
-              align: 'end',
-              labels: {
-                boxWidth: 8,
-                boxHeight: 8,
-                usePointStyle: true,
-                color: '#4a5260',
-                font: { family: 'DM Sans', size: 11, weight: 500 }
+        ctx1.chart = new Chart(ctx1, {
+          type: 'bar',
+          data: {
+            labels: ['Desempleo (Aragón)', 'Desempleo (EU)', 'Emancipación (Aragón)', 'Emancipación (EU)'],
+            datasets: [
+              {
+                type: 'bar',
+                label: 'Porcentaje %',
+                data: [18.46, 15.3, 17.3, 31.9],
+                backgroundColor: barGradient,
+                borderColor: 'rgba(28,61,90,.2)',
+                borderWidth: 1,
+                borderRadius: 8,
+                borderSkipped: false,
+                barPercentage: .58,
+                categoryPercentage: .68
               }
-            },
-            tooltip: {
-              backgroundColor: '#0f1217',
-              titleColor: '#ffffff',
-              bodyColor: 'rgba(255,255,255,.82)',
-              borderColor: 'rgba(255,255,255,.12)',
-              borderWidth: 1,
-              padding: 12,
-              displayColors: false,
-              callbacks: {
-                label: context => `${context.dataset.label}: ${context.parsed.y} tCO2e`
-              }
-            }
+            ]
           },
-          scales: {
-            x: {
-              grid: { display: false },
-              border: { display: false },
-              ticks: {
-                color: '#6b7280',
-                font: { family: 'DM Sans', size: 11, weight: 500 }
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            animation: { duration: 1100, easing: 'easeOutQuart' },
+            interaction: { intersect: false, mode: 'index' },
+            plugins: {
+              legend: {
+                display: true,
+                align: 'end',
+                labels: {
+                  boxWidth: 8,
+                  boxHeight: 8,
+                  usePointStyle: true,
+                  color: '#4a5260',
+                  font: { family: 'DM Sans', size: 11, weight: 500 }
+                }
+              },
+              tooltip: {
+                backgroundColor: '#0f1217',
+                titleColor: '#ffffff',
+                bodyColor: 'rgba(255,255,255,.82)',
+                borderColor: 'rgba(255,255,255,.12)',
+                borderWidth: 1,
+                padding: 12,
+                displayColors: false,
+                callbacks: {
+                  label: context => `${context.dataset.label}: ${context.parsed.y}%`
+                }
               }
             },
-            y: {
-              beginAtZero: false,
-              suggestedMin: 55,
-              suggestedMax: 130,
-              border: { display: false },
-              grid: { color: 'rgba(15,18,23,.07)', drawTicks: false },
-              ticks: {
-                color: '#8a929e',
-                padding: 10,
-                callback: value => `${value}t`,
-                font: { family: 'DM Sans', size: 11 }
+            scales: {
+              x: {
+                grid: { display: false },
+                border: { display: false },
+                ticks: {
+                  color: '#6b7280',
+                  font: { family: 'DM Sans', size: 11, weight: 500 }
+                }
+              },
+              y: {
+                beginAtZero: true,
+                max: 100,
+                border: { display: false },
+                grid: { color: 'rgba(15,18,23,.07)', drawTicks: false },
+                ticks: {
+                  color: '#8a929e',
+                  stepSize: 25,
+                  padding: 10,
+                  callback: value => `${value}%`,
+                  font: { family: 'DM Sans', size: 11 }
+                }
               }
             }
           }
+        });
+      }
+
+      const ctx2 = document.getElementById('carbonChart');
+      if (ctx2 && !ctx2.chart) {
+        const carbonContext = ctx2.getContext('2d');
+        const areaGradient = carbonContext.createLinearGradient(0, 0, 0, 250);
+        areaGradient.addColorStop(0, 'rgba(90,155,196,.28)');
+        areaGradient.addColorStop(.62, 'rgba(217,168,23,.1)');
+        areaGradient.addColorStop(1, 'rgba(255,255,255,0)');
+
+        ctx2.chart = new Chart(ctx2, {
+          type: 'bar',
+          data: {
+            labels: ['Exportación Talento', 'Atracción Talento'],
+            datasets: [
+              {
+                label: 'Cualificación Alta %',
+                data: [43, 11.3],
+                backgroundColor: ['#b73735', '#5a9bc4'],
+                borderRadius: 8,
+                barPercentage: .5
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            animation: { duration: 1200, easing: 'easeOutQuart' },
+            interaction: { intersect: false, mode: 'index' },
+            plugins: {
+              legend: {
+                display: true,
+                align: 'end',
+                labels: {
+                  boxWidth: 8,
+                  boxHeight: 8,
+                  usePointStyle: true,
+                  color: '#4a5260',
+                  font: { family: 'DM Sans', size: 11, weight: 500 }
+                }
+              },
+              tooltip: {
+                backgroundColor: '#0f1217',
+                titleColor: '#ffffff',
+                bodyColor: 'rgba(255,255,255,.82)',
+                borderColor: 'rgba(255,255,255,.12)',
+                borderWidth: 1,
+                padding: 12,
+                displayColors: false,
+                callbacks: {
+                  label: context => `${context.dataset.label}: ${context.parsed.y} tCO2e`
+                }
+              }
+            },
+            scales: {
+              x: {
+                grid: { display: false },
+                border: { display: false },
+                ticks: {
+                  color: '#6b7280',
+                  font: { family: 'DM Sans', size: 11, weight: 500 }
+                }
+              },
+              y: {
+                beginAtZero: false,
+                suggestedMin: 55,
+                suggestedMax: 130,
+                border: { display: false },
+                grid: { color: 'rgba(15,18,23,.07)', drawTicks: false },
+                ticks: {
+                  color: '#8a929e',
+                  padding: 10,
+                  callback: value => `${value}t`,
+                  font: { family: 'DM Sans', size: 11 }
+                }
+              }
+            }
+          }
+        });
+      }
+    }
+
+    // Re-animate when ODS section becomes active
+    const observer = new MutationObserver(mutations => {
+      mutations.forEach(m => {
+        if (m.target.id === 'ods' && m.target.classList.contains('active')) {
+          initProgressBars();
+          initCharts();
         }
       });
-    }
-  }
+    });
 
-  // Re-animate when ODS section becomes active
-  const observer = new MutationObserver(mutations => {
-    mutations.forEach(m => {
-      if (m.target.id === 'ods' && m.target.classList.contains('active')) {
+    document.querySelectorAll('.section').forEach(s => {
+      observer.observe(s, { attributes: true, attributeFilter: ['class'] });
+    });
+
+    // Init on load if ODS is default (it's not, but just in case)
+    document.addEventListener('DOMContentLoaded', () => {
+      if (document.getElementById('ods').classList.contains('active')) {
         initProgressBars();
         initCharts();
       }
     });
-  });
-
-  document.querySelectorAll('.section').forEach(s => {
-    observer.observe(s, { attributes: true, attributeFilter: ['class'] });
-  });
-
-  // Init on load if ODS is default (it's not, but just in case)
-  document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('ods').classList.contains('active')) {
-      initProgressBars();
-      initCharts();
-    }
-  });
-</script>
+  </script>
 </body>
+
 </html>
